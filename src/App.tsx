@@ -1,12 +1,34 @@
 import styled from 'styled-components';
-import { PlayIcon } from '@heroicons/react/20/solid';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { minuteState, secondState, timeState } from './atoms';
+import { PauseIcon, PlayIcon } from '@heroicons/react/20/solid';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { DEFAULT_TIME, minuteState, secondState, timeState } from './atoms';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const setTime = useSetRecoilState(timeState);
+  const [time, setTime] = useRecoilState(timeState);
   const minute = useRecoilValue(minuteState);
   const second = useRecoilValue(secondState);
+
+  const [isPlay, setIsPlay] = useState(false);
+  const [timer, setTimer] = useState<NodeJS.Timeout>();
+  const onClick = () => {
+    clearInterval(timer);
+    if (!isPlay) {
+      const newTimer = setInterval(() => {
+        setTime((prev) => prev - 1);
+      }, 1000);
+      setTimer(newTimer);
+    }
+    setIsPlay((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (time < 0 && isPlay) {
+      clearInterval(timer!);
+      setIsPlay(false);
+      setTime(DEFAULT_TIME);
+    }
+  }, [time, isPlay, timer, setTime]);
 
   return (
     <main>
@@ -18,8 +40,8 @@ function App() {
           <TimeCard>{String(second).padStart(2, '0')}</TimeCard>
         </TimeContainer>
         <ButtonArea>
-          <Button>
-            <PlayIcon />
+          <Button onClick={onClick}>
+            {isPlay ? <PauseIcon /> : <PlayIcon />}
           </Button>
         </ButtonArea>
         <CountContainer>
