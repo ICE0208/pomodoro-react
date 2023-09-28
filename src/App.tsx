@@ -102,8 +102,12 @@ function App() {
   return (
     <main>
       <Container>
+        {/* 제목 --------------------------------------- */}
         <Title>Pomodoro</Title>
+
+        {/* 시간 --------------------------------------- */}
         <TimeContainer>
+          {/* 분 ---- */}
           <CardContainer>
             <AnimatePresence>
               <TimeCard
@@ -118,7 +122,7 @@ function App() {
             </AnimatePresence>
           </CardContainer>
           <span>:</span>
-
+          {/* 초 ---- */}
           <CardContainer>
             <AnimatePresence>
               <TimeCard
@@ -133,7 +137,10 @@ function App() {
             </AnimatePresence>
           </CardContainer>
         </TimeContainer>
+
+        {/* 버튼 --------------------------------------- */}
         <ButtonContainer>
+          {/* 시작, 정지 버튼 ---- */}
           <TimerButton
             onClick={onClick}
             whileHover={{ scale: 1.1 }}
@@ -141,6 +148,8 @@ function App() {
           >
             {isPlay ? <PauseIcon /> : <PlayIcon />}
           </TimerButton>
+
+          {/* 리셋, 초기화 버튼 ---- */}
           <SubButtonContainer>
             {!isPlay && (
               <>
@@ -162,6 +171,8 @@ function App() {
             )}
           </SubButtonContainer>
         </ButtonContainer>
+
+        {/* 카운트 --------------------------------------- */}
         <CountContainer>
           <CountElement>
             <span>{round}/4</span>
