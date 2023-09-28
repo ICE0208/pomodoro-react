@@ -23,3 +23,26 @@ export const secondState = selector({
     return time < 0 ? 0 : time % 60;
   },
 });
+
+// ----
+
+export const countState = atom<number>({
+  key: 'count',
+  default: 0,
+});
+
+export const roundState = selector({
+  key: 'countOfRound',
+  get: ({ get }) => {
+    const count = get(countState);
+    return count % 4;
+  },
+});
+
+export const goalState = selector({
+  key: 'countOfGoal',
+  get: ({ get }) => {
+    const count = get(countState);
+    return Math.floor(count / 4);
+  },
+});
