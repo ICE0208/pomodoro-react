@@ -17,6 +17,7 @@ import {
 import { useEffect, useState } from 'react';
 import {
   ButtonContainer,
+  CardContainer,
   Container,
   CountContainer,
   CountElement,
@@ -27,6 +28,25 @@ import {
   TimerButton,
   Title,
 } from './styles/main';
+import { AnimatePresence, Variants, motion } from 'framer-motion';
+
+const timeCardVariant: Variants = {
+  initial: { rotateY: 180, opacity: 0 },
+  animate: {
+    rotateY: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  exit: {
+    rotateY: -180,
+    opacity: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
 
 function App() {
   const [time, setTime] = useRecoilState(timeState);
@@ -84,9 +104,34 @@ function App() {
       <Container>
         <Title>Pomodoro</Title>
         <TimeContainer>
-          <TimeCard>{String(minute).padStart(2, '0')}</TimeCard>
+          <CardContainer>
+            <AnimatePresence>
+              <TimeCard
+                key={minute}
+                variants={timeCardVariant}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                {String(minute).padStart(2, '0')}
+              </TimeCard>
+            </AnimatePresence>
+          </CardContainer>
           <span>:</span>
-          <TimeCard>{String(second).padStart(2, '0')}</TimeCard>
+
+          <CardContainer>
+            <AnimatePresence>
+              <TimeCard
+                key={second}
+                variants={timeCardVariant}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                {String(second).padStart(2, '0')}
+              </TimeCard>
+            </AnimatePresence>
+          </CardContainer>
         </TimeContainer>
         <ButtonContainer>
           <TimerButton onClick={onClick}>

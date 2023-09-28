@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const TimeContainer = styled.div`
@@ -13,7 +14,14 @@ export const TimeContainer = styled.div`
   }
 `;
 
-export const TimeCard = styled.div`
+export const CardContainer = styled.div`
+  width: 180px;
+  height: 240px;
+  position: relative;
+  margin-top: 10px;
+`;
+
+export const TimeCard = styled(motion.div)`
   background-color: white;
   color: tomato;
   padding: 80px 0;
@@ -23,5 +31,7 @@ export const TimeCard = styled.div`
   width: 180px;
   text-align: center;
   box-sizing: border-box;
-  margin-top: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
