@@ -1,5 +1,10 @@
 import styled from 'styled-components';
-import { PauseIcon, PlayIcon } from '@heroicons/react/20/solid';
+import {
+  ArrowPathIcon,
+  PauseIcon,
+  PlayIcon,
+  TrashIcon,
+} from '@heroicons/react/20/solid';
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import {
   DEFAULT_TIME,
@@ -56,11 +61,23 @@ function App() {
           <span>:</span>
           <TimeCard>{String(second).padStart(2, '0')}</TimeCard>
         </TimeContainer>
-        <ButtonArea>
-          <Button onClick={onClick}>
+        <ButtonContainer>
+          <TimerButton onClick={onClick}>
             {isPlay ? <PauseIcon /> : <PlayIcon />}
-          </Button>
-        </ButtonArea>
+          </TimerButton>
+          <SubButtonContainer>
+            {!isPlay && (
+              <>
+                <SubButtonArea>
+                  <ArrowPathIcon />
+                </SubButtonArea>
+                <SubButtonArea>
+                  <TrashIcon />
+                </SubButtonArea>
+              </>
+            )}
+          </SubButtonContainer>
+        </ButtonContainer>
         <CountContainer>
           <CountElement>
             <span>{round}/4</span>
@@ -119,15 +136,16 @@ const TimeCard = styled.div`
   margin-top: 10px;
 `;
 
-const ButtonArea = styled.div`
+const ButtonContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
   margin-top: 10px;
 `;
 
-const Button = styled.div`
+const TimerButton = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   width: 100px;
   height: 100px;
@@ -137,6 +155,27 @@ const Button = styled.div`
   align-items: center;
   padding: 20px;
   color: white;
+`;
+
+const SubButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+  gap: 30px;
+  height: 40px;
+`;
+
+const SubButtonArea = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  color: whitesmoke;
+  border-radius: 50%;
 `;
 
 const CountContainer = styled.div`
