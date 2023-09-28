@@ -1,7 +1,7 @@
 import { atom, selector } from 'recoil';
 import { recoilPersist } from 'recoil-persist';
 
-export const DEFAULT_TIME = 65;
+export const DEFAULT_TIME = 60 * 25;
 // 60 * 25;
 
 const { persistAtom } = recoilPersist();

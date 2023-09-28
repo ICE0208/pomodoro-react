@@ -7,5 +7,5 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: tomato;
+  background-color: rgba(255, 100, 71, 1);
 `;

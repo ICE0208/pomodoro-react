@@ -21,6 +21,7 @@ import {
   Container,
   CountContainer,
   CountElement,
+  Overlay,
   SubButton,
   SubButtonContainer,
   TimeCard,
@@ -59,6 +60,9 @@ function App() {
 
   const [isPlay, setIsPlay] = useState(false);
   const [timer, setTimer] = useState<NodeJS.Timeout>();
+
+  const [isBigMode, setIsBigMode] = useState(false);
+
   const onClick = () => {
     clearInterval(timer);
     if (!isPlay) {
@@ -183,7 +187,55 @@ function App() {
             <span>GOAL</span>
           </CountElement>
         </CountContainer>
+        <button
+          style={{ position: 'absolute' }}
+          onClick={() => setIsBigMode(true)}
+        >
+          button
+        </button>
       </Container>
+      {isBigMode && (
+        <AnimatePresence>
+          <Overlay
+            onClick={() => setIsBigMode(false)}
+            initial={{ backgroundColor: 'rgba(255, 100, 71, 0)' }}
+            animate={{ backgroundColor: 'rgba(255, 100, 71, 1)' }}
+            exit={{ backgroundColor: 'rgba(255, 100, 71, 0)' }}
+          >
+            <TimeContainer>
+              {/* 분 ---- */}
+              <CardContainer $big>
+                <AnimatePresence>
+                  <TimeCard
+                    key={minute}
+                    variants={timeCardVariant}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    {String(minute).padStart(2, '0')}
+                  </TimeCard>
+                </AnimatePresence>
+              </CardContainer>
+              <span>:</span>
+              {/* 초 ---- */}
+              <CardContainer $big>
+                <AnimatePresence>
+                  <TimeCard
+                    key={second}
+                    variants={timeCardVariant}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    {String(second).padStart(2, '0')}
+                  </TimeCard>
+                </AnimatePresence>
+              </CardContainer>
+            </TimeContainer>
+          </Overlay>
+        </AnimatePresence>
+      )}
     </main>
   );
 }
