@@ -1,5 +1,6 @@
 import {
   ArrowPathIcon,
+  MagnifyingGlassPlusIcon,
   PauseIcon,
   PlayIcon,
   TrashIcon,
@@ -187,13 +188,27 @@ function App() {
             <span>GOAL</span>
           </CountElement>
         </CountContainer>
-        <button
-          style={{ position: 'absolute' }}
+
+        {/* 타이머 확대 버튼*/}
+        <motion.div
+          style={{
+            fontSize: '16px',
+            position: 'absolute',
+            bottom: '20px',
+            right: '20px',
+            width: '36px',
+            height: '36px',
+            color: 'white',
+          }}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.9 }}
           onClick={() => setIsBigMode(true)}
         >
-          button
-        </button>
+          <MagnifyingGlassPlusIcon />
+        </motion.div>
       </Container>
+
+      {/* 타이머 확대 기능 구현 */}
       {isBigMode && (
         <AnimatePresence>
           <Overlay
