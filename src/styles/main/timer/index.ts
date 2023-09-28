@@ -17,7 +17,7 @@ export const CardContainer = styled(motion.div)<{ $big?: boolean }>`
   width: ${(props) => (props.$big ? '36vw' : '180px')};
   height: ${(props) => (props.$big ? '48vw' : '240px')};
   margin: ${(props) => (props.$big ? '1vw' : 0)};
-  font-size: ${(props) => (props.$big ? '24vw' : '80px')};
+  font-size: ${(props) => (props.$big ? '20vw' : '80px')};
   position: relative;
   margin-top: 10px;
   & + span {

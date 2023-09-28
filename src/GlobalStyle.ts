@@ -53,6 +53,7 @@ table {
 }
 body {
   font-family: 'Source Sans 3', sans-serif;
+  background-color: tomato;
 }
 a {
   text-decoration: none;
