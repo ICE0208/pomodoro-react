@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 export const ButtonContainer = styled.div`
@@ -9,7 +10,7 @@ export const ButtonContainer = styled.div`
   margin-top: 10px;
 `;
 
-export const TimerButton = styled.div`
+export const TimerButton = styled(motion.div)`
   background-color: rgba(0, 0, 0, 0.3);
   width: 100px;
   height: 100px;
@@ -19,6 +20,7 @@ export const TimerButton = styled.div`
   align-items: center;
   padding: 20px;
   color: white;
+  cursor: pointer;
 `;
 
 export const SubButtonContainer = styled.div`
@@ -30,7 +32,7 @@ export const SubButtonContainer = styled.div`
   height: 40px;
 `;
 
-export const SubButton = styled.div`
+export const SubButton = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,4 +42,5 @@ export const SubButton = styled.div`
   padding: 8px;
   color: whitesmoke;
   border-radius: 50%;
+  cursor: pointer;
 `;

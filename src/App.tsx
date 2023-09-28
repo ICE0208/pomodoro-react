@@ -28,7 +28,7 @@ import {
   TimerButton,
   Title,
 } from './styles/main';
-import { AnimatePresence, Variants, motion } from 'framer-motion';
+import { AnimatePresence, Variants } from 'framer-motion';
 
 const timeCardVariant: Variants = {
   initial: { rotateY: 180, opacity: 0 },
@@ -134,16 +134,28 @@ function App() {
           </CardContainer>
         </TimeContainer>
         <ButtonContainer>
-          <TimerButton onClick={onClick}>
+          <TimerButton
+            onClick={onClick}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.85 }}
+          >
             {isPlay ? <PauseIcon /> : <PlayIcon />}
           </TimerButton>
           <SubButtonContainer>
             {!isPlay && (
               <>
-                <SubButton onClick={onRefresh}>
+                <SubButton
+                  onClick={onRefresh}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <ArrowPathIcon />
                 </SubButton>
-                <SubButton onClick={onReset}>
+                <SubButton
+                  onClick={onReset}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
                   <TrashIcon />
                 </SubButton>
               </>
