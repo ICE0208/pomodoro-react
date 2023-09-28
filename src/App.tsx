@@ -29,7 +29,7 @@ import {
   TimerButton,
   Title,
 } from './styles/main';
-import { AnimatePresence, Variants } from 'framer-motion';
+import { AnimatePresence, Variants, motion } from 'framer-motion';
 
 const timeCardVariant: Variants = {
   initial: { rotateY: 180, opacity: 0 },
@@ -112,7 +112,7 @@ function App() {
         {/* 시간 --------------------------------------- */}
         <TimeContainer>
           {/* 분 ---- */}
-          <CardContainer>
+          <CardContainer layoutId="minuteCard">
             <AnimatePresence>
               <TimeCard
                 key={minute}
@@ -125,9 +125,9 @@ function App() {
               </TimeCard>
             </AnimatePresence>
           </CardContainer>
-          <span>:</span>
+          <motion.span layoutId="seperator">:</motion.span>
           {/* 초 ---- */}
-          <CardContainer>
+          <CardContainer layoutId="secondCard">
             <AnimatePresence>
               <TimeCard
                 key={second}
@@ -204,7 +204,7 @@ function App() {
           >
             <TimeContainer>
               {/* 분 ---- */}
-              <CardContainer $big>
+              <CardContainer $big layoutId="minuteCard">
                 <AnimatePresence>
                   <TimeCard
                     key={minute}
@@ -217,9 +217,9 @@ function App() {
                   </TimeCard>
                 </AnimatePresence>
               </CardContainer>
-              <span>:</span>
+              <motion.span layoutId="seperator">:</motion.span>
               {/* 초 ---- */}
-              <CardContainer $big>
+              <CardContainer $big layoutId="secondCard">
                 <AnimatePresence>
                   <TimeCard
                     key={second}

@@ -13,7 +13,7 @@ export const TimeContainer = styled.div`
   }
 `;
 
-export const CardContainer = styled.div<{ $big?: boolean }>`
+export const CardContainer = styled(motion.div)<{ $big?: boolean }>`
   width: ${(props) => (props.$big ? '36vw' : '180px')};
   height: ${(props) => (props.$big ? '48vw' : '240px')};
   margin: ${(props) => (props.$big ? '1vw' : 0)};
