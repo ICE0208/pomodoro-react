@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import {
   ArrowPathIcon,
   PauseIcon,
@@ -16,6 +15,18 @@ import {
   timeState,
 } from './atoms';
 import { useEffect, useState } from 'react';
+import {
+  ButtonContainer,
+  Container,
+  CountContainer,
+  CountElement,
+  SubButtonArea,
+  SubButtonContainer,
+  TimeCard,
+  TimeContainer,
+  TimerButton,
+  Title,
+} from './styles/main';
 
 function App() {
   const [time, setTime] = useRecoilState(timeState);
@@ -92,118 +103,5 @@ function App() {
     </main>
   );
 }
-
-const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background-color: tomato;
-`;
-
-const Title = styled.h1`
-  font-size: 52px;
-  color: white;
-  font-weight: bold;
-  margin-top: 60px;
-`;
-
-const TimeContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  span {
-    color: white;
-    padding: 0 8px;
-    font-size: 60px;
-    font-weight: bolder;
-  }
-`;
-
-const TimeCard = styled.div`
-  background-color: white;
-  color: tomato;
-  padding: 80px 0;
-  font-size: 80px;
-  font-weight: bolder;
-  border-radius: 18px;
-  width: 180px;
-  text-align: center;
-  box-sizing: border-box;
-  margin-top: 10px;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  margin-top: 10px;
-`;
-
-const TimerButton = styled.div`
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  color: white;
-`;
-
-const SubButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 16px;
-  gap: 30px;
-  height: 40px;
-`;
-
-const SubButtonArea = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  width: 40px;
-  height: 40px;
-  padding: 8px;
-  color: whitesmoke;
-  border-radius: 50%;
-`;
-
-const CountContainer = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  gap: 90px;
-  color: white;
-  font-weight: bold;
-  margin-top: 10px;
-  margin-bottom: 60px;
-`;
-
-const CountElement = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-
-  span:nth-child(1) {
-    font-size: 28px;
-    opacity: 0.8;
-  }
-  span:nth-child(2) {
-    font-size: 24px;
-  }
-`;
 
 export default App;
