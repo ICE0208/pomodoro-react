@@ -1,7 +1,10 @@
 import { atom, selector } from 'recoil';
+import { recoilPersist } from 'recoil-persist';
 
 export const DEFAULT_TIME = 3;
 // 60 * 25;
+
+const { persistAtom } = recoilPersist();
 
 export const timeState = atom<number>({
   key: 'remainTime',
@@ -29,6 +32,7 @@ export const secondState = selector({
 export const countState = atom<number>({
   key: 'count',
   default: 0,
+  effects: [persistAtom],
 });
 
 export const roundState = selector({
