@@ -27,11 +27,12 @@ export const TimeCard = styled(motion.div)`
   padding: 80px 0;
   font-size: 80px;
   font-weight: bolder;
-  border-radius: 18px;
+  border-radius: 20px;
   width: 180px;
   text-align: center;
   box-sizing: border-box;
   position: absolute;
   top: 0;
   left: 0;
+  backface-visibility: hidden;
 `;
