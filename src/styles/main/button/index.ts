@@ -30,7 +30,7 @@ export const SubButtonContainer = styled.div`
   height: 40px;
 `;
 
-export const SubButtonArea = styled.div`
+export const SubButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

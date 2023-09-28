@@ -20,7 +20,7 @@ import {
   Container,
   CountContainer,
   CountElement,
-  SubButtonArea,
+  SubButton,
   SubButtonContainer,
   TimeCard,
   TimeContainer,
@@ -50,11 +50,27 @@ function App() {
     setIsPlay((prev) => !prev);
   };
 
+  const onRefresh = () => {
+    // 타이머 초기화
+    clearInterval(timer);
+    setIsPlay(false);
+    setTime(DEFAULT_TIME);
+  };
+  const onReset = () => {
+    // 타이머 초기화
+    clearInterval(timer);
+    setIsPlay(false);
+    setTime(DEFAULT_TIME);
+
+    // 카운트 초기화
+    setCount(0);
+  };
+
   // 타이머 다 됐을 때
   useEffect(() => {
     if (time < 0 && isPlay) {
       // 타이머 초기화
-      clearInterval(timer!);
+      clearInterval(timer);
       setIsPlay(false);
       setTime(DEFAULT_TIME);
 
@@ -79,12 +95,12 @@ function App() {
           <SubButtonContainer>
             {!isPlay && (
               <>
-                <SubButtonArea>
+                <SubButton onClick={onRefresh}>
                   <ArrowPathIcon />
-                </SubButtonArea>
-                <SubButtonArea>
+                </SubButton>
+                <SubButton onClick={onReset}>
                   <TrashIcon />
-                </SubButtonArea>
+                </SubButton>
               </>
             )}
           </SubButtonContainer>
