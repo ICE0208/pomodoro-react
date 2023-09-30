@@ -54,6 +54,7 @@ table {
 body {
   font-family: 'Source Sans 3', sans-serif;
   background-color: tomato;
+  overflow: hidden;
 }
 a {
   text-decoration: none;

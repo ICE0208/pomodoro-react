@@ -14,12 +14,11 @@ export const TimeContainer = styled.div`
 `;
 
 export const CardContainer = styled(motion.div)<{ $big?: boolean }>`
-  width: ${(props) => (props.$big ? '36vw' : '180px')};
-  height: ${(props) => (props.$big ? '48vw' : '240px')};
-  margin: ${(props) => (props.$big ? '1vw' : 0)};
+  width: ${(props) => (props.$big ? '38vw' : '180px')};
+  height: ${(props) => (props.$big ? '84vh' : '240px')};
+  margin: 0 ${(props) => (props.$big ? '1vw' : 0)};
   font-size: ${(props) => (props.$big ? '20vw' : '80px')};
   position: relative;
-  margin-top: 10px;
   & + span {
     font-size: ${(props) => (props.$big ? '10vw' : '60px')};
   }
